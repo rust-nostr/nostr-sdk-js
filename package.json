@@ -11,13 +11,13 @@
     "social"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/rust-nostr/nostr",
+  "homepage": "https://github.com/rust-nostr/nostr-sdk-js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rust-nostr/nostr.git"
+    "url": "git+https://github.com/rust-nostr/nostr-sdk-js.git"
   },
   "bugs": {
-    "url": "https://github.com/rust-nostr/nostr/issues"
+    "url": "https://github.com/rust-nostr/nostr-sdk-js/issues"
   },
   "author": {
     "name": "Yuki Kishimoto",
