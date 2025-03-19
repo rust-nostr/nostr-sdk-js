@@ -1,0 +1,24 @@
+# Rust
+.cargo/
+target/
+src/
+Cargo.toml
+Cargo.lock
+
+# JS package and scripts
+scripts/
+pkg/README.md
+pkg/package.json
+pkg/*.wasm
+
+# Other stuff
+.github/
+benches/
+contrib/
+examples/
+.gitignore
+*.tgz
+
+# IDEs
+.idea/
+.vscode/

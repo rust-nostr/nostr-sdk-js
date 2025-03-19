@@ -1,0 +1,17 @@
+# Rust
+target/
+
+# JS
+node_modules/
+package-lock.json
+pkg/
+wasm-pack.log
+*.tgz
+
+# IDEs
+.idea/
+.vscode/
+
+# ?
+bin/
+**/*.rs.bk
