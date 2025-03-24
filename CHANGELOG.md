@@ -37,6 +37,5 @@
 
 ### Fixed
 
-### Removed
+* Fix `NostrConnect` constructor
 
-### Deprecated

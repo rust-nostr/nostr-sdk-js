@@ -36,7 +36,7 @@ impl From<NostrConnect> for JsNostrConnect {
 #[wasm_bindgen(js_class = NostrConnect)]
 impl JsNostrConnect {
     /// Construct Nostr Connect client
-    #[wasm_bindgen]
+    #[wasm_bindgen(constructor)]
     pub fn new(
         uri: &JsNostrConnectURI,
         app_keys: &JsKeys,
