@@ -25,6 +25,12 @@
 
 -->
 
+## 0.40.2
+
+### Fixed
+
+* Fixes from upstream rust crates
+
 ## 0.40.1
 
 ### Fixed
