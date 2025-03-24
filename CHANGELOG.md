@@ -25,15 +25,7 @@
 
 -->
 
-## [Unreleased]
-
-### Summary
-
-### Breaking changes
-
-### Changed
-
-### Added
+## 0.40.1
 
 ### Fixed
 
