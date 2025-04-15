@@ -29,7 +29,7 @@
 
 ## Changed
 
-* Bump upstream deps to ce2ba11a
+* Bump upstream deps to 0.41.0 (see the [Upstream CHANGELOG] for more details)
 
 ## Added
 
@@ -47,3 +47,5 @@
 
 * Fix `NostrConnect` constructor
 
+<!-- Links -->
+[Upstream CHANGELOG]: https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md
