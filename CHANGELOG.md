@@ -25,7 +25,7 @@
 
 -->
 
-## Unreleased
+## v0.41.0 - 2025/04/15
 
 ## Changed
 
@@ -35,13 +35,13 @@
 
 * Expose `Relay::ban`
 
-## 0.40.2
+## v0.40.2
 
 ### Fixed
 
 * Fixes from upstream rust crates
 
-## 0.40.1
+## v0.40.1
 
 ### Fixed
 
