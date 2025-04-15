@@ -29,7 +29,7 @@
 
 ### Fixes
 
-* Pin wasm-bindgen to 0.2.95 to fix "Constructor of class '<name>' is private and only accessible within the class declaration" issue
+* Pin wasm-bindgen to 0.2.95 to fix "Constructor of class '\<name\>' is private and only accessible within the class declaration" issue
 
 ## v0.41.0 - 2025/04/15
 
