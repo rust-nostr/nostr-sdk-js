@@ -31,6 +31,10 @@
 
 * Bump upstream deps to ce2ba11a
 
+## Added
+
+* Expose `Relay::ban`
+
 ## 0.40.2
 
 ### Fixed
