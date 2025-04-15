@@ -73,7 +73,7 @@ impl JsHttpData {
 
     #[wasm_bindgen(getter)]
     pub fn method(&self) -> JsHttpMethod {
-        self.inner.method.clone().into()
+        self.inner.method.into()
     }
 
     #[wasm_bindgen(getter)]

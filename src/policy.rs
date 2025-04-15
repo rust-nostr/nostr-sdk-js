@@ -19,7 +19,7 @@ impl From<JsAdmitStatus> for AdmitStatus {
     fn from(status: JsAdmitStatus) -> Self {
         match status {
             JsAdmitStatus::Success => Self::Success,
-            JsAdmitStatus::Rejected => Self::Rejected,
+            JsAdmitStatus::Rejected => Self::Rejected { reason: None },
         }
     }
 }

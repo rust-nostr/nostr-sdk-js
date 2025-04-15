@@ -124,9 +124,10 @@ impl JsTag {
     ///
     /// <https://github.com/nostr-protocol/nips/blob/master/01.md>
     #[inline]
-    pub fn coordinate(coordinate: &JsCoordinate) -> Self {
+    pub fn coordinate(coordinate: &JsCoordinate, relay_url: Option<String>) -> Self {
+        let relay_url: Option<RelayUrl> = relay_url.and_then(|url| RelayUrl::parse(&url).ok());
         Self {
-            inner: Tag::coordinate(coordinate.deref().clone()),
+            inner: Tag::coordinate(coordinate.deref().clone(), relay_url),
         }
     }
 

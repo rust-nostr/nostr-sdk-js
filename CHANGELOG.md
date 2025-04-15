@@ -25,6 +25,12 @@
 
 -->
 
+## Unreleased
+
+## Changed
+
+* Bump upstream deps to ce2ba11a
+
 ## 0.40.2
 
 ### Fixed

@@ -848,9 +848,9 @@ impl JsEventBuilder {
     ///
     /// <https://github.com/nostr-protocol/nips/blob/master/32.md>
     #[wasm_bindgen]
-    pub fn label(label_namespace: &str, labels: Vec<String>) -> Self {
+    pub fn label(label_namespace: &str, label: String) -> Self {
         Self {
-            inner: EventBuilder::label(label_namespace, labels),
+            inner: EventBuilder::label(label_namespace, label),
         }
     }
 

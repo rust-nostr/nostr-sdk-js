@@ -349,6 +349,10 @@ pub enum JsKindStandard {
     ///
     /// <https://github.com/nostr-protocol/nips/blob/master/60.md>
     CashuWalletSpendingHistory,
+    /// Code Snippet
+    ///
+    /// <https://github.com/nostr-protocol/nips/blob/master/C0.md>
+    CodeSnippet,
 }
 
 fn convert(k: Kind) -> Option<JsKindStandard> {
@@ -438,6 +442,7 @@ fn convert(k: Kind) -> Option<JsKindStandard> {
         Kind::CashuWallet => Some(JsKindStandard::CashuWallet),
         Kind::CashuWalletUnspentProof => Some(JsKindStandard::CashuWalletUnspentProof),
         Kind::CashuWalletSpendingHistory => Some(JsKindStandard::CashuWalletSpendingHistory),
+        Kind::CodeSnippet => Some(JsKindStandard::CodeSnippet),
         Kind::Custom(..) => None,
     }
 }
@@ -524,6 +529,7 @@ impl From<JsKindStandard> for Kind {
             JsKindStandard::CashuWallet => Self::CashuWallet,
             JsKindStandard::CashuWalletUnspentProof => Self::CashuWalletUnspentProof,
             JsKindStandard::CashuWalletSpendingHistory => Self::CashuWalletSpendingHistory,
+            JsKindStandard::CodeSnippet => Self::CodeSnippet,
         }
     }
 }

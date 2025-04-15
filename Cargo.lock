@@ -979,8 +979,7 @@ checksum = "f0efe882e02d206d8d279c20eb40e03baf7cb5136a1476dc084a324fbc3ec42d"
 [[package]]
 name = "nostr"
 version = "0.40.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2f900ddcdc28395759fcd44b18a03255e7deee8858551bfe5d5d5a07311d82ea"
+source = "git+https://github.com/rust-nostr/nostr?rev=ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54#ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54"
 dependencies = [
  "aes",
  "base64",
@@ -1009,8 +1008,7 @@ dependencies = [
 [[package]]
 name = "nostr-connect"
 version = "0.40.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "52a0479b5f2da48ddd36061281bc2b3738610a287ad485aae397c44c148b3c6d"
+source = "git+https://github.com/rust-nostr/nostr?rev=ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54#ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54"
 dependencies = [
  "async-utility",
  "nostr",
@@ -1022,8 +1020,7 @@ dependencies = [
 [[package]]
 name = "nostr-database"
 version = "0.40.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "714512e4653f4e7c4f4abb50a0ac82257541b22087dee780b9e3d787276e88d4"
+source = "git+https://github.com/rust-nostr/nostr?rev=ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54#ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54"
 dependencies = [
  "flatbuffers",
  "lru",
@@ -1034,8 +1031,7 @@ dependencies = [
 [[package]]
 name = "nostr-indexeddb"
 version = "0.40.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "271fc3911f93255c9e4abc0e7c8fcdf63e2c80d39dd51122eccddfef351a33d3"
+source = "git+https://github.com/rust-nostr/nostr?rev=ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54#ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54"
 dependencies = [
  "indexed_db_futures",
  "nostr",
@@ -1045,9 +1041,8 @@ dependencies = [
 
 [[package]]
 name = "nostr-relay-pool"
-version = "0.40.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5bde07a729e0a1b306c9a07da81a0d1d55d0487316017090906f3b6660741b8d"
+version = "0.40.0"
+source = "git+https://github.com/rust-nostr/nostr?rev=ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54#ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54"
 dependencies = [
  "async-utility",
  "async-wsocket",
@@ -1064,8 +1059,7 @@ dependencies = [
 [[package]]
 name = "nostr-sdk"
 version = "0.40.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "26238eee805d7dc3abcc8d570068c81cb4285b08e9db4d7999e54e20748c472e"
+source = "git+https://github.com/rust-nostr/nostr?rev=ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54#ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54"
 dependencies = [
  "async-utility",
  "nostr",
@@ -1104,8 +1098,7 @@ dependencies = [
 [[package]]
 name = "nwc"
 version = "0.40.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a17ecafa5837b3eddf23a5872800e14f203ed9a22fc6ab0e674f8fd016a6893"
+source = "git+https://github.com/rust-nostr/nostr?rev=ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54#ce2ba11ab4ed94d2ac9f5eb16f0340a76ae12d54"
 dependencies = [
  "async-utility",
  "nostr",
