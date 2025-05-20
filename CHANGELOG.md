@@ -27,6 +27,8 @@
 
 ## v0.42.0 - 2025/05/20
 
+### Changed
+
 - Bump nostr upstream deps to 0.42.0 (see the [Upstream CHANGELOG] for more details)
 
 ## v0.41.1 - 2025/04/15
