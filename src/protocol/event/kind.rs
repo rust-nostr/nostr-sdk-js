@@ -139,6 +139,8 @@ pub enum JsKindStandard {
     Reaction,
     /// Badge Award (NIP58)
     BadgeAward,
+    /// Blossom Authorization
+    BlossomAuth,
     /// Channel Creation (NIP28)
     ChannelCreation,
     /// Channel Metadata (NIP28)
@@ -443,6 +445,7 @@ fn convert(k: Kind) -> Option<JsKindStandard> {
         Kind::CashuWalletUnspentProof => Some(JsKindStandard::CashuWalletUnspentProof),
         Kind::CashuWalletSpendingHistory => Some(JsKindStandard::CashuWalletSpendingHistory),
         Kind::CodeSnippet => Some(JsKindStandard::CodeSnippet),
+        Kind::BlossomAuth => Some(JsKindStandard::BlossomAuth),
         Kind::Custom(..) => None,
     }
 }
@@ -460,6 +463,7 @@ impl From<JsKindStandard> for Kind {
             JsKindStandard::Comment => Self::Comment,
             JsKindStandard::Reaction => Self::Reaction,
             JsKindStandard::BadgeAward => Self::BadgeAward,
+            JsKindStandard::BlossomAuth => Self::BlossomAuth,
             JsKindStandard::ChannelCreation => Self::ChannelCreation,
             JsKindStandard::ChannelMetadata => Self::ChannelMetadata,
             JsKindStandard::ChannelMessage => Self::ChannelMessage,
