@@ -17,7 +17,7 @@ tracing = "0.1"
 tracing-subscriber = "0.3"
 # Pin wasm-bindgen to 0.2.95 for now, fo avoid to had to manually add constructors to records (structs with public fields)
 # https://github.com/rustwasm/wasm-bindgen/pull/4282
-wasm-bindgen = { version = "=0.2.95", features = ["std"] }
+wasm-bindgen = { version = "=0.2.100", features = ["std"] }
 wasm-bindgen-futures = "0.4"
 
 [package.metadata.wasm-pack.profile.profiling]
