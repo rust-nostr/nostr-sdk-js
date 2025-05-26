@@ -25,6 +25,12 @@
 
 -->
 
+## Unreleased
+
+### Fixed
+
+- Fix JsRelayArray TypeScript type declaration
+
 ## v0.42.0 - 2025/05/20
 
 ### Changed

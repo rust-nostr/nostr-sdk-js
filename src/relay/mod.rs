@@ -53,7 +53,7 @@ impl From<Reconciliation> for JsReconciliation {
 #[wasm_bindgen]
 extern "C" {
     /// Array
-    #[wasm_bindgen(typescript_type = "JsRelay[]")]
+    #[wasm_bindgen(typescript_type = "Relay[]")]
     pub type JsRelayArray;
 }
 
