@@ -27,6 +27,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Bump nostr from 0.42.0 to 0.42.1 (see the [Upstream CHANGELOG] for more details)
+
 ### Fixed
 
 - Fix JsRelayArray TypeScript type declaration
