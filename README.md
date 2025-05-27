@@ -10,10 +10,6 @@ This library **should** work on every JavaScript environment (nodejs, web, react
 
 Learn more about `rust-nostr` at <https://rust-nostr.org>.
 
-## Supported NIPs
-
-Look at <https://github.com/rust-nostr/nostr/tree/master/crates/nostr#supported-nips>
-
 ## State
 
 **This library is in an ALPHA state**, things that are implemented generally work but the API will change in breaking ways.
