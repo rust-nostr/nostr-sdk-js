@@ -45,7 +45,7 @@ impl JsRelayLimits {
         self
     }
 
-    /// Maximum size of normalised JSON, in bytes (default: 70_000)
+    /// Maximum size of normalised JSON, in bytes (default: null)
     #[wasm_bindgen(js_name = eventMaxSize)]
     pub fn event_max_size(mut self, max_size: Option<u32>) -> Self {
         self.inner.events.max_size = max_size;

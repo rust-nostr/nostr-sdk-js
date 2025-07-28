@@ -7,7 +7,7 @@ use std::ops::Deref;
 use nostr_sdk::prelude::*;
 use wasm_bindgen::prelude::*;
 
-use super::options::JsOptions;
+use super::options::JsClientOptions;
 use super::{JsClient, JsNostrSigner};
 use crate::database::JsNostrDatabase;
 use crate::policy::{FFI2RustAdmitPolicy, JsAdmitPolicy};
@@ -48,7 +48,7 @@ impl JsClientBuilder {
             .into()
     }
 
-    pub fn opts(self, opts: &JsOptions) -> Self {
+    pub fn opts(self, opts: &JsClientOptions) -> Self {
         self.inner.opts(opts.deref().clone()).into()
     }
 

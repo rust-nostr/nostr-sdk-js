@@ -289,6 +289,7 @@ pub enum JsKindStandard {
     WalletConnectRequest,
     /// Wallet Connect Response (NIP47)
     WalletConnectResponse,
+    WalletConnectNotification,
     /// Nostr Connect (NIP46)
     NostrConnect,
     /// Live Event (NIP53)
@@ -355,6 +356,8 @@ pub enum JsKindStandard {
     ///
     /// <https://github.com/nostr-protocol/nips/blob/master/C0.md>
     CodeSnippet,
+    Poll,
+    PollResponse,
 }
 
 fn convert(k: Kind) -> Option<JsKindStandard> {
@@ -389,6 +392,7 @@ fn convert(k: Kind) -> Option<JsKindStandard> {
         Kind::GitStatusDraft => Some(JsKindStandard::GitStatusDraft),
         Kind::Label => Some(JsKindStandard::Label),
         Kind::WalletConnectInfo => Some(JsKindStandard::WalletConnectInfo),
+        Kind::WalletConnectNotification => Some(JsKindStandard::WalletConnectNotification),
         Kind::Reporting => Some(JsKindStandard::Reporting),
         Kind::ZapPrivateMessage => Some(JsKindStandard::ZapPrivateMessage),
         Kind::ZapRequest => Some(JsKindStandard::ZapRequest),
@@ -446,6 +450,8 @@ fn convert(k: Kind) -> Option<JsKindStandard> {
         Kind::CashuWalletSpendingHistory => Some(JsKindStandard::CashuWalletSpendingHistory),
         Kind::CodeSnippet => Some(JsKindStandard::CodeSnippet),
         Kind::BlossomAuth => Some(JsKindStandard::BlossomAuth),
+        Kind::Poll => Some(JsKindStandard::Poll),
+        Kind::PollResponse => Some(JsKindStandard::PollResponse),
         Kind::Custom(..) => None,
     }
 }
@@ -504,6 +510,7 @@ impl From<JsKindStandard> for Kind {
             JsKindStandard::Authentication => Self::Authentication,
             JsKindStandard::WalletConnectRequest => Self::WalletConnectRequest,
             JsKindStandard::WalletConnectResponse => Self::WalletConnectResponse,
+            JsKindStandard::WalletConnectNotification => Self::WalletConnectNotification,
             JsKindStandard::NostrConnect => Self::NostrConnect,
             JsKindStandard::LiveEvent => Self::LiveEvent,
             JsKindStandard::LiveEventMessage => Self::LiveEventMessage,
@@ -534,6 +541,8 @@ impl From<JsKindStandard> for Kind {
             JsKindStandard::CashuWalletUnspentProof => Self::CashuWalletUnspentProof,
             JsKindStandard::CashuWalletSpendingHistory => Self::CashuWalletSpendingHistory,
             JsKindStandard::CodeSnippet => Self::CodeSnippet,
+            JsKindStandard::Poll => Self::Poll,
+            JsKindStandard::PollResponse => Self::PollResponse,
         }
     }
 }

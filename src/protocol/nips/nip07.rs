@@ -4,6 +4,7 @@
 
 use core::ops::Deref;
 
+use nostr_browser_signer::BrowserSigner;
 use nostr_sdk::prelude::*;
 use wasm_bindgen::prelude::*;
 

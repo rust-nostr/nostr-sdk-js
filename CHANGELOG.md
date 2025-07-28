@@ -25,11 +25,17 @@
 
 -->
 
+## Unreleased
+
+### Changed
+
+- Bump nostr upstream deps to 0.43 (see the upstream CHANGELOG for more details)
+
 ## v0.42.1 - 2025/05/26
 
 ### Changed
 
-- Bump nostr from 0.42.0 to 0.42.1 (see the [Upstream CHANGELOG] for more details)
+- Bump nostr from 0.42.0 to 0.42.1 (see the upstream CHANGELOG for more details)
 
 ### Fixed
 
@@ -39,7 +45,7 @@
 
 ### Changed
 
-- Bump nostr upstream deps to 0.42.0 (see the [Upstream CHANGELOG] for more details)
+- Bump nostr upstream deps to 0.42.0 (see the upstream CHANGELOG for more details)
 
 ## v0.41.1 - 2025/04/15
 
@@ -51,7 +57,7 @@
 
 ## Changed
 
-- Bump upstream deps to 0.41.0 (see the [Upstream CHANGELOG] for more details)
+- Bump upstream deps to 0.41.0 (see the upstream CHANGELOG for more details)
 
 ## Added
 
@@ -68,6 +74,3 @@
 ### Fixed
 
 - Fix `NostrConnect` constructor
-
-<!-- Links -->
-[Upstream CHANGELOG]: https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md

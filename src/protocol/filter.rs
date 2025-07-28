@@ -462,6 +462,7 @@ impl JsFilter {
     #[inline]
     #[wasm_bindgen(js_name = matchEvent)]
     pub fn match_event(&self, event: &JsEvent) -> bool {
-        self.inner.match_event(event.deref())
+        self.inner
+            .match_event(event.deref(), MatchEventOptions::new())
     }
 }

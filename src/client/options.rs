@@ -9,31 +9,31 @@ use wasm_bindgen::prelude::*;
 
 use crate::relay::limits::JsRelayLimits;
 
-#[wasm_bindgen(js_name = Options)]
-pub struct JsOptions {
-    inner: Options,
+#[wasm_bindgen(js_name = ClientOptions)]
+pub struct JsClientOptions {
+    inner: ClientOptions,
 }
 
-impl Deref for JsOptions {
-    type Target = Options;
+impl Deref for JsClientOptions {
+    type Target = ClientOptions;
 
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
 
-impl From<Options> for JsOptions {
-    fn from(inner: Options) -> Self {
+impl From<ClientOptions> for JsClientOptions {
+    fn from(inner: ClientOptions) -> Self {
         Self { inner }
     }
 }
 
-#[wasm_bindgen(js_class = Options)]
-impl JsOptions {
+#[wasm_bindgen(js_class = ClientOptions)]
+impl JsClientOptions {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
         Self {
-            inner: Options::new(),
+            inner: ClientOptions::new(),
         }
     }
 

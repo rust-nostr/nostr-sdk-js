@@ -461,12 +461,15 @@ pub struct JsPayInvoiceResponse {
     /// Response preimage
     #[wasm_bindgen(getter_with_clone)]
     pub preimage: String,
+    /// Fees paid
+    pub fees_paid: Option<u64>,
 }
 
 impl From<PayInvoiceResponse> for JsPayInvoiceResponse {
     fn from(value: PayInvoiceResponse) -> Self {
         Self {
             preimage: value.preimage,
+            fees_paid: value.fees_paid,
         }
     }
 }
@@ -475,6 +478,7 @@ impl From<JsPayInvoiceResponse> for PayInvoiceResponse {
     fn from(value: JsPayInvoiceResponse) -> Self {
         Self {
             preimage: value.preimage,
+            fees_paid: value.fees_paid,
         }
     }
 }

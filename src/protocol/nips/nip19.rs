@@ -107,8 +107,14 @@ impl JsNip19Profile {
     /// New NIP19 profile
     #[wasm_bindgen(constructor)]
     pub fn new(public_key: &JsPublicKey, relays: Vec<String>) -> Result<JsNip19Profile> {
+        let mut parsed_relays = Vec::with_capacity(relays.len());
+
+        for url in relays {
+            parsed_relays.push(RelayUrl::parse(&url).map_err(into_err)?);
+        }
+
         Ok(Self {
-            inner: Nip19Profile::new(**public_key, relays).map_err(into_err)?,
+            inner: Nip19Profile::new(**public_key, parsed_relays),
         })
     }
 
@@ -161,8 +167,14 @@ impl From<Nip19Coordinate> for JsNip19Coordinate {
 impl JsNip19Coordinate {
     #[wasm_bindgen(constructor)]
     pub fn new(coordinate: &JsCoordinate, relays: Vec<String>) -> Result<JsNip19Coordinate> {
+        let mut parsed_relays = Vec::with_capacity(relays.len());
+
+        for url in relays {
+            parsed_relays.push(RelayUrl::parse(&url).map_err(into_err)?);
+        }
+
         Ok(Self {
-            inner: Nip19Coordinate::new(coordinate.deref().clone(), relays).map_err(into_err)?,
+            inner: Nip19Coordinate::new(coordinate.deref().clone(), parsed_relays),
         })
     }
 

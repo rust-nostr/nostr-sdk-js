@@ -4,13 +4,10 @@
 
 pub mod nip01;
 pub mod nip04;
-pub mod nip05;
 pub mod nip07;
 pub mod nip09;
-pub mod nip11;
 pub mod nip15;
 pub mod nip19;
-pub mod nip26;
 pub mod nip34;
 pub mod nip44;
 pub mod nip46;

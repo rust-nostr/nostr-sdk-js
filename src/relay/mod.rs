@@ -19,7 +19,6 @@ use crate::error::{into_err, Result};
 use crate::protocol::event::{JsEvent, JsEventId};
 use crate::protocol::filter::JsFilter;
 use crate::protocol::message::JsClientMessage;
-use crate::protocol::nips::nip11::JsRelayInformationDocument;
 
 #[derive(Clone)]
 #[wasm_bindgen(js_name = Reconciliation)]
@@ -84,6 +83,8 @@ pub enum JsRelayStatus {
     Terminated,
     /// The relay has been banned.
     Banned,
+    /// Relay is sleeping
+    Sleeping,
 }
 
 impl From<RelayStatus> for JsRelayStatus {
@@ -96,6 +97,7 @@ impl From<RelayStatus> for JsRelayStatus {
             RelayStatus::Disconnected => Self::Disconnected,
             RelayStatus::Terminated => Self::Terminated,
             RelayStatus::Banned => Self::Banned,
+            RelayStatus::Sleeping => Self::Sleeping,
         }
     }
 }
@@ -121,11 +123,6 @@ impl JsRelay {
     #[wasm_bindgen(js_name = isConnected)]
     pub fn is_connected(&self) -> bool {
         self.inner.is_connected()
-    }
-
-    /// Get `RelayInformationDocument`
-    pub async fn document(&self) -> JsRelayInformationDocument {
-        self.inner.document().await.into()
     }
 
     // TODO: ad subscriptions
