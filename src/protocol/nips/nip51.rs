@@ -16,7 +16,7 @@ use crate::protocol::key::JsPublicKey;
 /// Things the user doesn't want to see in their feeds
 ///
 /// <https://github.com/nostr-protocol/nips/blob/master/51.md>
-#[derive(Clone)]
+#[derive(Clone, Default)]
 #[wasm_bindgen(js_name = MuteList)]
 pub struct JsMuteList {
     #[wasm_bindgen(getter_with_clone)]
@@ -40,10 +40,18 @@ impl From<JsMuteList> for MuteList {
     }
 }
 
+#[wasm_bindgen(js_class = MuteList)]
+impl JsMuteList {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self::default()
+    }
+}
+
 /// Uncategorized, "global" list of things a user wants to save
 ///
 /// <https://github.com/nostr-protocol/nips/blob/master/51.md>
-#[derive(Clone)]
+#[derive(Clone, Default)]
 #[wasm_bindgen(js_name = Bookmarks)]
 pub struct JsBookmarks {
     #[wasm_bindgen(getter_with_clone)]
@@ -79,10 +87,18 @@ impl TryFrom<JsBookmarks> for Bookmarks {
     }
 }
 
+#[wasm_bindgen(js_class = Bookmarks)]
+impl JsBookmarks {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self::default()
+    }
+}
+
 /// Topics a user may be interested in and pointers
 ///
 /// <https://github.com/nostr-protocol/nips/blob/master/51.md>
-#[derive(Clone)]
+#[derive(Clone, Default)]
 #[wasm_bindgen(js_name = Interests)]
 pub struct JsInterests {
     #[wasm_bindgen(getter_with_clone)]
@@ -101,6 +117,14 @@ impl From<JsInterests> for Interests {
                 .map(|c| c.deref().clone())
                 .collect(),
         }
+    }
+}
+
+#[wasm_bindgen(js_class = Interests)]
+impl JsInterests {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self::default()
     }
 }
 
@@ -124,10 +148,18 @@ impl TryFrom<JsEmojiInfo> for (String, Url) {
     }
 }
 
+#[wasm_bindgen(js_class = EmojiInfo)]
+impl JsEmojiInfo {
+    #[wasm_bindgen(constructor)]
+    pub fn new(shortcode: String, url: String) -> Self {
+        Self { shortcode, url }
+    }
+}
+
 /// User preferred emojis and pointers to emoji sets
 ///
 /// <https://github.com/nostr-protocol/nips/blob/master/51.md>
-#[derive(Clone)]
+#[derive(Clone, Default)]
 #[wasm_bindgen(js_name = Emojis)]
 pub struct JsEmojis {
     #[wasm_bindgen(getter_with_clone)]
@@ -154,10 +186,18 @@ impl From<JsEmojis> for Emojis {
     }
 }
 
+#[wasm_bindgen(js_class = Emojis)]
+impl JsEmojis {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self::default()
+    }
+}
+
 /// Groups of articles picked by users as interesting and/or belonging to the same category
 ///
 /// <https://github.com/nostr-protocol/nips/blob/master/51.md>
-#[derive(Clone)]
+#[derive(Clone, Default)]
 #[wasm_bindgen(js_name = ArticlesCuration)]
 pub struct JsArticlesCuration {
     #[wasm_bindgen(getter_with_clone)]
@@ -176,5 +216,13 @@ impl From<JsArticlesCuration> for ArticlesCuration {
                 .collect(),
             event_ids: value.event_ids.into_iter().map(|e| e.into()).collect(),
         }
+    }
+}
+
+#[wasm_bindgen(js_class = ArticlesCuration)]
+impl JsArticlesCuration {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self::default()
     }
 }

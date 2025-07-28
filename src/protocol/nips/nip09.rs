@@ -8,6 +8,7 @@ use super::nip01::JsCoordinate;
 use crate::protocol::event::id::JsEventId;
 
 /// Event deletion request
+#[derive(Default)]
 #[wasm_bindgen(js_name = EventDeletionRequest)]
 pub struct JsEventDeletionRequest {
     /// Event IDs
@@ -28,5 +29,13 @@ impl From<JsEventDeletionRequest> for EventDeletionRequest {
             coordinates: request.coordinates.into_iter().map(Into::into).collect(),
             reason: request.reason,
         }
+    }
+}
+
+#[wasm_bindgen(js_class = EventDeletionRequest)]
+impl JsEventDeletionRequest {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self::default()
     }
 }

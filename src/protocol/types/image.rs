@@ -57,3 +57,11 @@ impl From<JsImageDimensions> for ImageDimensions {
         }
     }
 }
+
+#[wasm_bindgen(js_class = ImageDimensions)]
+impl JsImageDimensions {
+    #[wasm_bindgen(constructor)]
+    pub fn new(width: u64, height: u64) -> Self {
+        Self { width, height }
+    }
+}

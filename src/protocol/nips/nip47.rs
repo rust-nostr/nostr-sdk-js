@@ -105,6 +105,18 @@ impl From<JsPayInvoiceRequest> for PayInvoiceRequest {
     }
 }
 
+#[wasm_bindgen(js_class = PayInvoiceRequest)]
+impl JsPayInvoiceRequest {
+    #[wasm_bindgen(constructor)]
+    pub fn new(invoice: String) -> Self {
+        Self {
+            id: None,
+            invoice,
+            amount: None,
+        }
+    }
+}
+
 /// Multi Pay Invoice Request Params
 #[wasm_bindgen(js_name = MultiPayInvoiceRequest)]
 pub struct JsMultiPayInvoiceRequest {
@@ -126,6 +138,14 @@ impl From<JsMultiPayInvoiceRequest> for MultiPayInvoiceRequest {
         Self {
             invoices: value.invoices.into_iter().map(|i| i.into()).collect(),
         }
+    }
+}
+
+#[wasm_bindgen(js_class = MultiPayInvoiceRequest)]
+impl JsMultiPayInvoiceRequest {
+    #[wasm_bindgen(constructor)]
+    pub fn new(invoices: Vec<JsPayInvoiceRequest>) -> Self {
+        Self { invoices }
     }
 }
 
@@ -155,6 +175,14 @@ impl From<JsKeysendTLVRecord> for KeysendTLVRecord {
             tlv_type: value.tlv_type,
             value: value.value,
         }
+    }
+}
+
+#[wasm_bindgen(js_class = KeysendTLVRecord)]
+impl JsKeysendTLVRecord {
+    #[wasm_bindgen(constructor)]
+    pub fn new(tlv_type: u64, value: String) -> Self {
+        Self { tlv_type, value }
     }
 }
 
@@ -202,6 +230,20 @@ impl From<JsPayKeysendRequest> for PayKeysendRequest {
     }
 }
 
+#[wasm_bindgen(js_class = PayKeysendRequest)]
+impl JsPayKeysendRequest {
+    #[wasm_bindgen(constructor)]
+    pub fn new(pubkey: String, amount: u64) -> Self {
+        Self {
+            id: None,
+            amount,
+            pubkey,
+            preimage: None,
+            tlv_records: Vec::new(),
+        }
+    }
+}
+
 /// Multi Pay Keysend Request Params
 #[derive(Clone)]
 #[wasm_bindgen(js_name = MultiPayKeysendRequest)]
@@ -224,6 +266,14 @@ impl From<JsMultiPayKeysendRequest> for MultiPayKeysendRequest {
         Self {
             keysends: value.keysends.into_iter().map(|i| i.into()).collect(),
         }
+    }
+}
+
+#[wasm_bindgen(js_class = MultiPayKeysendRequest)]
+impl JsMultiPayKeysendRequest {
+    #[wasm_bindgen(constructor)]
+    pub fn new(keysends: Vec<JsPayKeysendRequest>) -> Self {
+        Self { keysends }
     }
 }
 
@@ -293,6 +343,19 @@ impl From<JsMakeInvoiceRequest> for MakeInvoiceRequest {
     }
 }
 
+#[wasm_bindgen(js_class = MakeInvoiceRequest)]
+impl JsMakeInvoiceRequest {
+    #[wasm_bindgen(constructor)]
+    pub fn new(amount: u64) -> Self {
+        Self {
+            amount,
+            description: None,
+            description_hash: None,
+            expiry: None,
+        }
+    }
+}
+
 /// Lookup Invoice Request Params
 #[derive(Clone)]
 #[wasm_bindgen(js_name = LookupInvoiceRequest)]
@@ -319,6 +382,17 @@ impl From<JsLookupInvoiceRequest> for LookupInvoiceRequest {
         Self {
             payment_hash: value.payment_hash,
             invoice: value.invoice,
+        }
+    }
+}
+
+#[wasm_bindgen(js_class = LookupInvoiceRequest)]
+impl JsLookupInvoiceRequest {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self {
+            payment_hash: None,
+            invoice: None,
         }
     }
 }
@@ -363,6 +437,21 @@ impl From<JsListTransactionsRequest> for ListTransactionsRequest {
             offset: value.offset,
             unpaid: value.unpaid,
             transaction_type: value.transaction_type.map(|t| t.into()),
+        }
+    }
+}
+
+#[wasm_bindgen(js_class = ListTransactionsRequest)]
+impl JsListTransactionsRequest {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self {
+            from: None,
+            until: None,
+            limit: None,
+            offset: None,
+            unpaid: None,
+            transaction_type: None,
         }
     }
 }

@@ -76,6 +76,23 @@ impl From<JsGitRepositoryAnnouncement> for GitRepositoryAnnouncement {
     }
 }
 
+#[wasm_bindgen(js_class = GitRepositoryAnnouncement)]
+impl JsGitRepositoryAnnouncement {
+    #[wasm_bindgen(constructor)]
+    pub fn new(id: String) -> Self {
+        Self {
+            id,
+            name: None,
+            description: None,
+            web: Vec::new(),
+            clone: Vec::new(),
+            relays: Vec::new(),
+            euc: None,
+            maintainers: Vec::new(),
+        }
+    }
+}
+
 /// Git Issue
 #[wasm_bindgen(js_name = GitIssue)]
 pub struct JsGitIssue {
@@ -100,6 +117,19 @@ impl From<JsGitIssue> for GitIssue {
             content: value.content,
             subject: value.subject,
             labels: value.labels,
+        }
+    }
+}
+
+#[wasm_bindgen(js_class = GitIssue)]
+impl JsGitIssue {
+    #[wasm_bindgen(constructor)]
+    pub fn new(repository: &JsCoordinate, content: String) -> Self {
+        Self {
+            repository: repository.clone(),
+            content,
+            subject: None,
+            labels: Vec::new(),
         }
     }
 }
