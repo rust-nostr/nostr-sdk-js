@@ -978,11 +978,10 @@ dependencies = [
 
 [[package]]
 name = "nwc"
-version = "0.43.0"
+version = "0.43.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "adb6990c75699662813e9c61b82dcd6d28fe34dad00858992fdd38320c57ff4a"
+checksum = "86d5fc9d1a00916c5619b10c7eb028df2e10616bf3bccd0df17aa1f0c552f53a"
 dependencies = [
- "async-utility",
  "nostr",
  "nostr-relay-pool",
  "tracing",
