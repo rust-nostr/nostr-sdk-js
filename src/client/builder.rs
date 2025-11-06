@@ -10,6 +10,7 @@ use wasm_bindgen::prelude::*;
 use super::options::JsClientOptions;
 use super::{JsClient, JsNostrSigner};
 use crate::database::JsNostrDatabase;
+use crate::gossip::JsNostrGossip;
 use crate::policy::{FFI2RustAdmitPolicy, JsAdmitPolicy};
 
 #[wasm_bindgen(js_name = ClientBuilder)]
@@ -39,6 +40,11 @@ impl JsClientBuilder {
 
     pub fn database(self, database: &JsNostrDatabase) -> Self {
         self.inner.database(database.deref().clone()).into()
+    }
+
+    /// Set gossip store
+    pub fn gossip(self, gossip: &JsNostrGossip) -> Self {
+        self.inner.gossip(gossip.deref().clone()).into()
     }
 
     #[wasm_bindgen(js_name = admitPolicy)]
