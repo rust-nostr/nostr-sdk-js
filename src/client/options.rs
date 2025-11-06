@@ -9,6 +9,62 @@ use wasm_bindgen::prelude::*;
 
 use crate::relay::limits::JsRelayLimits;
 
+/// Max number of relays to use for gossip
+#[wasm_bindgen(js_name = GossipRelayLimits)]
+pub struct JsGossipRelayLimits {
+    /// Max number of **read** relays per user (default: 3)
+    pub read_relays_per_user: usize,
+    /// Max number of **write** relays per user (default: 3)
+    pub write_relays_per_user: usize,
+    /// Max number of **hint** relays per user (default: 1)
+    pub hint_relays_per_user: usize,
+    /// Max number of **most used** relays per user (default: 1)
+    pub most_used_relays_per_user: usize,
+    /// Max number of NIP-17 relays per user (default: 3)
+    pub nip17_relays: usize,
+}
+
+impl From<JsGossipRelayLimits> for GossipRelayLimits {
+    fn from(limits: JsGossipRelayLimits) -> Self {
+        Self {
+            read_relays_per_user: limits.read_relays_per_user,
+            write_relays_per_user: limits.write_relays_per_user,
+            hint_relays_per_user: limits.hint_relays_per_user,
+            most_used_relays_per_user: limits.most_used_relays_per_user,
+            nip17_relays: limits.nip17_relays,
+        }
+    }
+}
+
+/// Gossip options
+#[wasm_bindgen(js_name = GossipOptions)]
+pub struct JsGossipOptions {
+    inner: GossipOptions,
+}
+
+impl From<GossipOptions> for JsGossipOptions {
+    fn from(inner: GossipOptions) -> Self {
+        Self { inner }
+    }
+}
+
+impl Deref for JsGossipOptions {
+    type Target = GossipOptions;
+
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+
+#[wasm_bindgen(js_class = GossipOptions)]
+impl JsGossipOptions {
+    /// Set limits
+    #[inline]
+    pub fn limits(self, limits: JsGossipRelayLimits) -> Self {
+        self.inner.limits(limits.into()).into()
+    }
+}
+
 #[wasm_bindgen(js_name = ClientOptions)]
 pub struct JsClientOptions {
     inner: ClientOptions,
@@ -52,14 +108,14 @@ impl JsClientOptions {
         self.inner.automatic_authentication(enabled).into()
     }
 
-    /// Enable gossip model (default: false)
-    pub fn gossip(self, enable: bool) -> Self {
-        self.inner.gossip(enable).into()
-    }
-
     /// Set custom relay limits
     #[wasm_bindgen(js_name = relayLimits)]
     pub fn relay_limits(self, limits: &JsRelayLimits) -> Self {
         self.inner.relay_limits(limits.deref().clone()).into()
+    }
+
+    /// Set gossip options
+    pub fn gossip(self, opts: &JsGossipOptions) -> Self {
+        self.inner.gossip(**opts).into()
     }
 }

@@ -25,6 +25,12 @@
 
 -->
 
+## Unreleased
+
+### Changed
+
+- Bump nostr upstream deps to 0.44.0 (see the upstream CHANGELOG for more details)
+
 ## v0.43.0 - 2025/07/28
 
 ### Changed

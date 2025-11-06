@@ -37,6 +37,8 @@ impl From<Tags> for JsTags {
 
 #[wasm_bindgen(js_class = Tags)]
 impl JsTags {
+    // TODO: add new
+
     #[wasm_bindgen(js_name = fromList)]
     pub fn from_list(list: Vec<JsTag>) -> Self {
         Self {

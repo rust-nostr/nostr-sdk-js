@@ -305,6 +305,42 @@ impl From<TransactionType> for JsTransactionType {
     }
 }
 
+/// Transaction State
+#[derive(Clone, Copy)]
+#[wasm_bindgen(js_name = TransactionState)]
+pub enum JsTransactionState {
+    /// Pending
+    Pending,
+    /// Settled
+    Settled,
+    /// Expired (for invoices)
+    Expired,
+    /// Failed (for payments)
+    Failed,
+}
+
+impl From<JsTransactionState> for TransactionState {
+    fn from(value: JsTransactionState) -> Self {
+        match value {
+            JsTransactionState::Pending => Self::Pending,
+            JsTransactionState::Settled => Self::Settled,
+            JsTransactionState::Expired => Self::Expired,
+            JsTransactionState::Failed => Self::Failed,
+        }
+    }
+}
+
+impl From<TransactionState> for JsTransactionState {
+    fn from(value: TransactionState) -> Self {
+        match value {
+            TransactionState::Pending => Self::Pending,
+            TransactionState::Settled => Self::Settled,
+            TransactionState::Expired => Self::Expired,
+            TransactionState::Failed => Self::Failed,
+        }
+    }
+}
+
 /// Make Invoice Request Params
 #[derive(Clone)]
 #[wasm_bindgen(js_name = MakeInvoiceRequest)]
@@ -488,12 +524,15 @@ pub struct JsPayKeysendResponse {
     /// Response preimage
     #[wasm_bindgen(getter_with_clone)]
     pub preimage: String,
+    /// Fees paid
+    pub fees_paid: Option<u64>,
 }
 
 impl From<PayKeysendResponse> for JsPayKeysendResponse {
     fn from(value: PayKeysendResponse) -> Self {
         Self {
             preimage: value.preimage,
+            fees_paid: value.fees_paid,
         }
     }
 }
@@ -502,6 +541,7 @@ impl From<JsPayKeysendResponse> for PayKeysendResponse {
     fn from(value: JsPayKeysendResponse) -> Self {
         Self {
             preimage: value.preimage,
+            fees_paid: value.fees_paid,
         }
     }
 }
@@ -513,7 +553,24 @@ pub struct JsMakeInvoiceResponse {
     pub invoice: String,
     /// Invoice's payment hash
     #[wasm_bindgen(getter_with_clone)]
-    pub payment_hash: String,
+    pub payment_hash: Option<String>,
+    /// Invoice's description
+    #[wasm_bindgen(getter_with_clone)]
+    pub description: Option<String>,
+    /// Invoice's description hash
+    #[wasm_bindgen(getter_with_clone)]
+    pub description_hash: Option<String>,
+    /// Payment preimage
+    #[wasm_bindgen(getter_with_clone)]
+    pub preimage: Option<String>,
+    /// Amount in msats.
+    pub amount: Option<u64>,
+    /// Creation timestamp in seconds since epoch
+    #[wasm_bindgen(getter_with_clone)]
+    pub created_at: Option<JsTimestamp>,
+    /// Expiration timestamp in seconds since epoch
+    #[wasm_bindgen(getter_with_clone)]
+    pub expires_at: Option<JsTimestamp>,
 }
 
 impl From<MakeInvoiceResponse> for JsMakeInvoiceResponse {
@@ -521,6 +578,12 @@ impl From<MakeInvoiceResponse> for JsMakeInvoiceResponse {
         Self {
             invoice: value.invoice,
             payment_hash: value.payment_hash,
+            description: value.description,
+            description_hash: value.description_hash,
+            preimage: value.preimage,
+            amount: value.amount,
+            created_at: value.created_at.map(|t| t.into()),
+            expires_at: value.created_at.map(|t| t.into()),
         }
     }
 }
@@ -530,6 +593,12 @@ impl From<JsMakeInvoiceResponse> for MakeInvoiceResponse {
         Self {
             invoice: value.invoice,
             payment_hash: value.payment_hash,
+            description: value.description,
+            description_hash: value.description_hash,
+            preimage: value.preimage,
+            amount: value.amount,
+            created_at: value.created_at.map(|t| t.into()),
+            expires_at: value.created_at.map(|t| t.into()),
         }
     }
 }
@@ -538,6 +607,8 @@ impl From<JsMakeInvoiceResponse> for MakeInvoiceResponse {
 pub struct JsLookupInvoiceResponse {
     /// Transaction type
     pub transaction_type: Option<JsTransactionType>,
+    /// Transaction state
+    pub state: Option<JsTransactionState>,
     /// Bolt11 invoice
     #[wasm_bindgen(getter_with_clone)]
     pub invoice: Option<String>,
@@ -572,6 +643,7 @@ impl From<LookupInvoiceResponse> for JsLookupInvoiceResponse {
     fn from(value: LookupInvoiceResponse) -> Self {
         Self {
             transaction_type: value.transaction_type.map(|t| t.into()),
+            state: value.state.map(|t| t.into()),
             invoice: value.invoice,
             description: value.description,
             description_hash: value.description_hash,
@@ -591,6 +663,7 @@ impl From<JsLookupInvoiceResponse> for LookupInvoiceResponse {
     fn from(value: JsLookupInvoiceResponse) -> Self {
         Self {
             transaction_type: value.transaction_type.map(|t| t.into()),
+            state: value.state.map(|t| t.into()),
             invoice: value.invoice,
             description: value.description,
             description_hash: value.description_hash,
@@ -664,7 +737,7 @@ impl From<GetInfoResponse> for JsGetInfoResponse {
             network: value.network,
             block_height: value.block_height,
             block_hash: value.block_hash,
-            methods: value.methods,
+            methods: value.methods.into_iter().map(|m| m.to_string()).collect(),
             notifications: value.notifications,
         }
     }
@@ -679,7 +752,11 @@ impl From<JsGetInfoResponse> for GetInfoResponse {
             network: value.network,
             block_height: value.block_height,
             block_hash: value.block_hash,
-            methods: value.methods,
+            methods: value
+                .methods
+                .into_iter()
+                .filter_map(|m| m.parse().ok())
+                .collect(),
             notifications: value.notifications,
         }
     }

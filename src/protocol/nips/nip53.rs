@@ -8,6 +8,7 @@ use wasm_bindgen::prelude::*;
 
 use crate::protocol::key::JsPublicKey;
 use crate::protocol::types::image::JsImageDimensions;
+use crate::protocol::types::JsTimestamp;
 
 #[wasm_bindgen(js_name = Image)]
 pub struct JsImage {
@@ -198,13 +199,13 @@ impl JsLiveEvent {
     }
 
     #[wasm_bindgen(getter)]
-    pub fn starts(&self) -> Option<f64> {
-        self.inner.starts.map(|t| t.as_u64() as f64)
+    pub fn starts(&self) -> Option<JsTimestamp> {
+        self.inner.starts.map(|t| t.into())
     }
 
     #[wasm_bindgen(getter)]
-    pub fn ends(&self) -> Option<f64> {
-        self.inner.ends.map(|t| t.as_u64() as f64)
+    pub fn ends(&self) -> Option<JsTimestamp> {
+        self.inner.ends.map(|t| t.into())
     }
 
     #[wasm_bindgen(getter)]

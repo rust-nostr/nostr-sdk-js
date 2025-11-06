@@ -452,7 +452,7 @@ fn convert(k: Kind) -> Option<JsKindStandard> {
         Kind::BlossomAuth => Some(JsKindStandard::BlossomAuth),
         Kind::Poll => Some(JsKindStandard::Poll),
         Kind::PollResponse => Some(JsKindStandard::PollResponse),
-        Kind::Custom(..) => None,
+        _ => None,
     }
 }
 

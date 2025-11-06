@@ -5,6 +5,7 @@
 use std::ops::Deref;
 use std::sync::Arc;
 
+use nostr_indexeddb::WebDatabase;
 use nostr_sdk::prelude::*;
 use wasm_bindgen::prelude::*;
 

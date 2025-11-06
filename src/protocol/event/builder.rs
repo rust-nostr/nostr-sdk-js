@@ -202,15 +202,9 @@ impl JsEventBuilder {
         content: &str,
         comment_to: &JsEvent,
         root: Option<JsEvent>,
-        relay_url: Option<String>,
     ) -> Result<JsEventBuilder> {
         Ok(Self {
-            inner: EventBuilder::comment(
-                content,
-                comment_to.deref(),
-                root.as_deref(),
-                parse_optional_relay_url(relay_url)?,
-            ),
+            inner: EventBuilder::comment(content, comment_to.deref(), root.as_deref()),
         })
     }
 
@@ -258,24 +252,6 @@ impl JsEventBuilder {
     pub fn reaction(event: &JsEvent, reaction: &str) -> Self {
         Self {
             inner: EventBuilder::reaction(event.deref(), reaction),
-        }
-    }
-
-    /// Add reaction (like/upvote, dislike/downvote or emoji) to an event
-    #[wasm_bindgen(js_name = reactionExtended)]
-    pub fn reaction_extended(
-        event_id: &JsEventId,
-        public_key: &JsPublicKey,
-        kind: Option<JsKind>,
-        reaction: &str,
-    ) -> Self {
-        Self {
-            inner: EventBuilder::reaction_extended(
-                **event_id,
-                **public_key,
-                kind.map(|k| *k),
-                reaction,
-            ),
         }
     }
 

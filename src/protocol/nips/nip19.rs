@@ -45,7 +45,7 @@ impl JsNip19Event {
     #[wasm_bindgen(js_name = fromEvent)]
     pub fn from_event(event: &JsEvent) -> Self {
         Self {
-            inner: Nip19Event::from_event(event.deref()),
+            inner: Nip19Event::from(event.deref()),
         }
     }
 

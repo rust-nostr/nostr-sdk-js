@@ -10,10 +10,11 @@ crate-type = ["cdylib"]
 [dependencies]
 console_error_panic_hook = "0.1"
 js-sys = "0.3"
-nostr-browser-signer = "0.43"
-nostr-connect = "0.43"
-nostr-sdk = { version = "0.43", default-features = false, features = ["all-nips", "indexeddb"] }
-nwc = "0.43"
+nostr-browser-signer = "0.44.0"
+nostr-connect = "0.44.0"
+nostr-indexeddb = "0.44.0"
+nostr-sdk = { version = "0.44.0", default-features = false, features = ["all-nips"] }
+nwc = "0.44.0"
 tracing = "0.1"
 tracing-subscriber = "0.3"
 wasm-bindgen = { version = "=0.2.100", features = ["std"] }

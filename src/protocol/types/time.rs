@@ -19,6 +19,12 @@ impl From<Timestamp> for JsTimestamp {
     }
 }
 
+impl From<JsTimestamp> for Timestamp {
+    fn from(obj: JsTimestamp) -> Self {
+        obj.inner
+    }
+}
+
 impl Deref for JsTimestamp {
     type Target = Timestamp;
 
@@ -47,7 +53,7 @@ impl JsTimestamp {
     /// Get timestamp as seconds
     #[wasm_bindgen(js_name = asSecs)]
     pub fn as_secs(&self) -> f64 {
-        self.inner.as_u64() as f64
+        self.inner.as_secs() as f64
     }
 
     /// Convert `Timestamp` to human datetime
