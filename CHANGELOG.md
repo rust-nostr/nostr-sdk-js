@@ -27,6 +27,11 @@
 
 ## Unreleased
 
+### Breaking changes
+
+- Change `ClientOptions::gossip` behavior and arguments
+- Remove `EventBuilder::reaction_extended` constructor
+
 ### Added
 
 - Add `NostrGossip` obj
